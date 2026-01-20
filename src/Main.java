@@ -92,34 +92,28 @@ public class Main {
         System.out.println("Diversión: " + diversion);
     }
 
-    // ===== OPCIÓN 2: COMER =====
     private static void comer() {
         if (saciedad >= 10) {
             System.out.println("No tengo hambre");
         } else {
-            saciedad += 3;
-            if (saciedad > 10) {
-                saciedad = 10;
-            }
+            saciedad += 2;
+            if (saciedad > 10) saciedad = 10;
+
             diversion -= 1;
-            if (diversion < 0) {
-                diversion = 0;
-            }
+            if (diversion < 0) diversion = 0;
         }
         mostrarEstado();
     }
 
-    // ===== OPCIÓN 3: JUGAR =====
     private static void jugar() {
         if (diversion >= 10) {
             System.out.println("Ahora no me apetece jugar");
         } else {
-            diversion += 3;
-            if (diversion > 10) {
-                diversion = 10;
-            }
+            diversion += 2;
+            if (diversion > 10) diversion = 10;
+
             saciedad -= 1;
-            energia -= 1;
+            energia -= 2;
 
             if (saciedad < 0) saciedad = 0;
             if (energia < 0) energia = 0;
@@ -127,17 +121,15 @@ public class Main {
         mostrarEstado();
     }
 
-    // ===== OPCIÓN 4: DORMIR =====
     private static void dormir() {
         if (energia >= 10) {
             System.out.println("No tengo sueño");
         } else {
-            energia += 3;
-            if (energia > 10) {
-                energia = 10;
-            }
-            saciedad -= 3;
-            diversion -= 2;
+            energia += 4;
+            if (energia > 10) energia = 10;
+
+            saciedad -= 2;
+            diversion -= 1;
 
             if (saciedad < 0) saciedad = 0;
             if (diversion < 0) diversion = 0;
