@@ -25,6 +25,9 @@ public class Main {
                 case 4:
                     dormir();
                     break;
+                case 5:
+                    curar();
+                    break;
                 case 0:
                     System.out.println("Saliendo del programa...");
                     break;
@@ -33,7 +36,6 @@ public class Main {
         } while (opcion != 0);
     }
 
-    // ===== MENÚ =====
     private static int menuPrincipal() {
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -43,6 +45,7 @@ public class Main {
             System.out.println("2. Comer");
             System.out.println("3. Jugar");
             System.out.println("4. Dormir");
+            System.out.println("5. Curar");
             System.out.println("----------------");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción del menú: ");
@@ -55,16 +58,15 @@ public class Main {
 
             opcion = sc.nextInt();
 
-            if (opcion < 0 || opcion > 4) {
+            if (opcion < 0 || opcion > 5) {
                 System.out.println("Opción no válida. Inténtelo de nuevo.");
             }
 
-        } while (opcion < 0 || opcion > 4);
+        } while (opcion < 0 || opcion > 5);
 
         return opcion;
     }
 
-    // ===== OPCIÓN 1: ESTADO =====
     private static void mostrarEstado() {
 
         System.out.println("\n--- ESTADO DEL TAMAGOTCHI ---");
@@ -134,6 +136,19 @@ public class Main {
             if (saciedad < 0) saciedad = 0;
             if (diversion < 0) diversion = 0;
         }
+        mostrarEstado();
+    }
+    private static void curar() {
+        System.out.println("El tamagotchi se está curando...");
+
+        energia += 2;
+        diversion += 1;
+        saciedad -= 2;
+
+        if (energia > 10) energia = 10;
+        if (diversion > 10) diversion = 10;
+        if (saciedad < 0) saciedad = 0;
+
         mostrarEstado();
     }
 }
