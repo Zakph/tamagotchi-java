@@ -7,13 +7,23 @@ public class Main {
     static int diversion = 6;
 
     public static void main(String[] args) {
-        int opcion = menuPrincipal();
+        int opcion;
 
-        if (opcion == 1) {
-            mostrarEstado();
-        }
+        do {
+            opcion = menuPrincipal();
 
-        System.out.println("Has seleccionado la opción: " + opcion);
+            switch (opcion) {
+                case 1:
+                    mostrarEstado();
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción aún no implementada.");
+            }
+
+        } while (opcion != 0);
     }
 
     private static int menuPrincipal() {
