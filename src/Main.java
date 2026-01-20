@@ -1,8 +1,18 @@
 import java.util.Scanner;
 
 public class Main {
+
+    static int saciedad = 6;
+    static int energia = 6;
+    static int diversion = 6;
+
     public static void main(String[] args) {
         int opcion = menuPrincipal();
+
+        if (opcion == 1) {
+            mostrarEstado();
+        }
+
         System.out.println("Has seleccionado la opción: " + opcion);
     }
 
@@ -21,7 +31,7 @@ public class Main {
 
             while (!sc.hasNextInt()) {
                 System.out.println("Opción no válida. Introduce un número.");
-                sc.next(); // limpiar entrada incorrecta
+                sc.next();
                 System.out.print("Seleccione una opción del menú: ");
             }
 
@@ -36,4 +46,30 @@ public class Main {
         return opcion;
     }
 
+    private static void mostrarEstado() {
+
+        System.out.println("\n--- ESTADO DEL TAMAGOTCHI ---");
+
+        if (saciedad == 0 || energia == 0 || diversion == 0) {
+            System.out.println("FIN DEL JUEGO");
+            return;
+        }
+
+        if (saciedad > 5 && energia > 5 && diversion > 5) {
+            System.out.println("CONTENTO");
+        }
+        else if (diversion <= 4) {
+            System.out.println("TRISTE");
+        }
+        else if (energia <= 4) {
+            System.out.println("CANSADO");
+        }
+        else if (saciedad <= 4) {
+            System.out.println("HAMBRIENTO");
+        }
+
+        System.out.println("Saciedad: " + saciedad);
+        System.out.println("Energía: " + energia);
+        System.out.println("Diversión: " + diversion);
+    }
 }
